@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:study_package/model/inputform.dart';
 
@@ -13,6 +14,8 @@ TextEditingController nameController = TextEditingController();
 TextEditingController ageController = TextEditingController();
 
   final users = <InputForm>[];
+
+  bool isDarkMode = false;
   
   @override
   void dispose() {
@@ -24,7 +27,19 @@ TextEditingController ageController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          CupertinoSwitch(
+            value: isDarkMode,
+            onChanged: (val) {
+              setState(() {
+                isDarkMode = val;
+              });
+              }
+          ),
+          const SizedBox(width: 10),
+        ],
+      ),
       body: Column(
         children: [
           Column(
